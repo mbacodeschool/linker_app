@@ -1,5 +1,7 @@
 class LinkItemsController < ApplicationController
 
+  before_filter :authenticate, :except => :redirector
+
 
   def redirector
     short_name = params[:short_name]
@@ -7,7 +9,13 @@ class LinkItemsController < ApplicationController
     
     v = Visitor.new({ :ip_address => request.remote_ip, :referrer => request.referer })
     li.visitors << v
-    redirect_to li.original_url
+
+    if li.needs_email
+      redirect_to edit_visitor_path(v)
+    else
+      redirect_to li.original_url
+    end
+
   end   
 
   # GET /link_items

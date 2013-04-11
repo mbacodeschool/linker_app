@@ -1,8 +1,7 @@
 LinkerApp::Application.routes.draw do
+  # resources :visitors
+  resources :link_items
   resources :visitors
-  resources :link_items do
-    resources :visitors
-  end
 
   match ':short_name' => "link_items#redirector"
 
