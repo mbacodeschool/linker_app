@@ -1,9 +1,10 @@
 LinkerApp::Application.routes.draw do
   resources :visitors
+  resources :link_items do
+    resources :visitors
+  end
 
-
-  resources :link_items
-
+  match ':short_name' => "link_items#redirector"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
