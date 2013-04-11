@@ -1,0 +1,27 @@
+<%- model_class = LinkItem -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:original_url) %>:</strong></dt>
+  <dd><%= @link_item.original_url %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:short_name) %>:</strong></dt>
+  <dd><%= @link_item.short_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:password) %>:</strong></dt>
+  <dd><%= @link_item.password %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:needs_email) %>:</strong></dt>
+  <dd><%= @link_item.needs_email %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              link_items_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_link_item_path(@link_item), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              link_item_path(@link_item),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

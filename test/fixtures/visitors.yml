@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ip_address: MyString
+  email_address: MyString
+  referrer: MyString
+  link_item_id: 1
+
+two:
+  ip_address: MyString
+  email_address: MyString
+  referrer: MyString
+  link_item_id: 1
