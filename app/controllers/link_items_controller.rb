@@ -1,4 +1,15 @@
 class LinkItemsController < ApplicationController
+
+
+  def redirector
+    short_name = params[:short_name]
+    li = LinkItem.find_by_short_name(short_name)
+    
+    v = Visitor.new({ :ip_address => request.remote_ip, :referrer => request.referer })
+    li.visitors << v
+    redirect_to li.original_url
+  end   
+
   # GET /link_items
   # GET /link_items.json
   def index
