@@ -61,11 +61,10 @@ class VisitorsController < ApplicationController
   # PUT /visitors/1.json
   def update
     @visitor = Visitor.find(params[:id])
-    debugger
 
     respond_to do |format|
       if @visitor.update_attributes(params[:visitor])
-        format.html { redirect_to @visitor.link_item.original_url }
+        format.html { redirect_to @visitor }
       end
     end
   end
